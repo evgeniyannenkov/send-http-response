@@ -1,0 +1,14 @@
+{
+    "version": "5.0.0",
+    "label": "Send HTTP Response External",
+    "icon": "http",
+    "iconType": "default",
+    "iconUrl": "",
+    "shape": "circle",
+    "tags": [],
+    "categories": [
+        "HTTP"
+    ],
+    "description": "Proactively enhance B2C e-markets without ubiquitous methods of empowerment. Monotonectally fashion future-proof potentialities vis-a-vis multimedia based infrastructures. Enthusiastically pontificate enabled portals before e-business innovation.",
+    "isGatewayStep": false
+}

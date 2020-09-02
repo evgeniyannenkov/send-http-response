@@ -5,20 +5,46 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "postinstall": "npm link @onereach/step-builder-sdk"
   },
   "dependencies": {
+    "@onereach/ui": "^2.0.100",
+    "@u3u/vue-hooks": "^2.0.1",
+    "@vue/composition-api": "^1.0.0-beta.11",
     "core-js": "^3.6.5",
-    "vue": "^2.6.11"
+    "lodash": "^4.17.20",
+    "normalize.css": "^8.0.1",
+    "vue": "^2.6.11",
+    "vuex": "^3.5.1"
   },
   "devDependencies": {
+    "@onereach/vue-cli-plugin-basic": "^2.3.2",
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-plugin-router": "^4.1.0",
+    "@vue/cli-plugin-vuex": "^4.1.0",
     "@vue/cli-service": "~4.5.0",
+    "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.1.0",
-    "eslint": "^6.7.2",
+    "body-parser": "^1.19.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.9.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-vue": "^6.2.2",
-    "vue-template-compiler": "^2.6.11"
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "node-sass": "^4.12.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
+    "prettier": "^1.19.1",
+    "prettier-eslint": "^9.0.1",
+    "raw-loader": "^3.1.0",
+    "redbird": "^0.10.0",
+    "sass-loader": "^8.0.0",
+    "standard": "^14.3.1",
+    "vue-template-compiler": "^2.6.11",
+    "webpack-svgstore-plugin": "^4.1.0",
+    "worker-loader": "^2.0.0"
   },
   "eslintConfig": {
     "root": true,

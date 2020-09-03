@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import { first, get } from 'lodash';
+import { first, get, find } from 'lodash';
 import { reactive, computed } from '@vue/composition-api';
 import { useActions, useGetters } from '@u3u/vue-hooks';
 import { getStatusCodeOptions, getContentTypeOptions } from './config';
@@ -47,24 +47,31 @@ export default {
                 set: value => actions.updateStepData({ body: value })
             }),
             code: computed({
-                get: () =>
-                    get(
-                        getters.getStepData.value,
-                        'code',
-                        first(getStatusCodeOptions())
-                    ),
-                set: option => actions.updateStepData({ code: option })
+                get: () => getInputValue('code', getStatusCodeOptions()),
+                set: option =>
+                    actions.updateStepData({
+                        code: serializeInputValue(option)
+                    })
             }),
             contentType: computed({
                 get: () =>
-                    get(
-                        getters.getStepData.value,
-                        'contentType',
-                        first(getContentTypeOptions())
-                    ),
-                set: option => actions.updateStepData({ contentType: option })
+                    getInputValue('contentType', getContentTypeOptions()),
+
+                set: option =>
+                    actions.updateStepData({
+                        contentType: serializeInputValue(option)
+                    })
             })
         });
+
+        function serializeInputValue({ value }) {
+            return value.toString();
+        }
+
+        function getInputValue(field, options) {
+            const value = get(getters.getStepData.value, field, '');
+            return find(options, { value }) || first(options);
+        }
 
         return { state };
     }

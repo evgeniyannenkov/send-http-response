@@ -1,35 +1,35 @@
 export const getStatusCodeOptions = () => [
     {
         label: '200 OK',
-        value: 200
+        value: '200'
     },
     {
         label: '301 Moved Permanently',
-        value: 301
+        value: '301'
     },
     {
         label: '302 Found',
-        value: 303
+        value: '303'
     },
     {
         label: '400 Bad Request',
-        value: 400
+        value: '400'
     },
     {
         label: '401 Unauthorized',
-        value: 401
+        value: '401'
     },
     {
         label: '403 Forbidden',
-        value: 403
+        value: '403'
     },
     {
         label: '404 Not Found',
-        value: 404
+        value: '404'
     },
     {
         label: '500 Internal Server Error',
-        value: 500
+        value: '500'
     }
 ];
 

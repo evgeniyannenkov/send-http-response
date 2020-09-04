@@ -4,6 +4,7 @@ const _get = require('lodash/get');
 const path = require('path');
 const bodyParser = require('body-parser');
 const packageJson = require('./package.json');
+const { version } = require('./src/lib/meta.json');
 
 const css = {
     loaderOptions: {
@@ -15,12 +16,13 @@ const css = {
 
 module.exports = {
     publicPath: './',
+    outputDir: path.join('dist', version),
     lintOnSave: false,
     assetsDir: 'static',
     runtimeCompiler: _get(packageJson, 'projectConfig.runtimeCompiler', false),
     productionSourceMap: false,
     devServer: {
-        contentBase: path.join(__dirname, 'public'),
+        contentBase: path.join('lib', version),
         index: 'index.html',
         host: 'localhost',
         port: _get(packageJson, 'projectConfig.devServerPort', '9100'),

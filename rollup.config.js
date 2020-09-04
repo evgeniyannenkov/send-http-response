@@ -1,6 +1,13 @@
-const replace = require('@rollup/plugin-replace');
+const path = require('path');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
+const copy = require('rollup-plugin-copy');
+const meta = require('./src/lib/meta.json');
+
+const dist =
+    process.env.BUILD === 'production'
+        ? path.join('dist', meta.version)
+        : path.join('lib', meta.version);
 
 module.exports = {
     input: {
@@ -10,19 +17,24 @@ module.exports = {
     },
     output: [
         {
-            dir: 'public',
+            dir: dist,
             format: 'es',
-            sourcemap: true
+            sourcemap: false
         }
     ],
     plugins: [
-        replace({
-            'process.env.BUILD': JSON.stringify('web') // vuelidate lib validators
-        }),
         nodeResolve({
             browser: true
         }),
-        commonjs()
+        commonjs(),
+        process.env.BUILD === 'development' &&
+            copy({
+                targets: [
+                    { src: 'src/lib/meta.json', dest: dist },
+                    { src: 'src/lib/logic.js', dest: dist },
+                    { src: 'public/**', dest: dist }
+                ]
+            })
     ],
     watch: {
         include: 'src/lib/**',

@@ -1,7 +1,6 @@
 <template>
     <div id="app">
         <Response />
-        {{ pr }}
     </div>
 </template>
 

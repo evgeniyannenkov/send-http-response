@@ -1,6 +1,6 @@
 {
-  "name": "send-http-response",
-  "version": "5.0.0",
+  "name": "external-step-boilerpalte",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "serve": "npm-run-all -p serve:*",

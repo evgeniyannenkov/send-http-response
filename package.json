@@ -3,12 +3,13 @@
   "version": "5.0.0",
   "private": true,
   "scripts": {
-    "serve": "npm-run-all --parallel serve:*",
-    "serve:vue": "vue-cli-service serve --copy",
-    "serve:lib": "rollup -c --environment BUILD:development -w",
-    "build": "npm-run-all --parallel build:*",
-    "build:vue": "vue-cli-service build --no-clean",
+    "serve": "npm-run-all -p serve:*",
+    "build": "npm-run-all -s build:*",
     "build:lib": "rollup -c --environment BUILD:production",
+    "build:vue": "vue-cli-service build --no-clean",
+    "serve:vue": "vue-cli-service build --watch --no-clean",
+    "serve:lib": "rollup -c -w --environment BUILD:development",
+    "serve:dist": "http-server ./dist --cors --ext js,html -p 5004",
     "lint": "vue-cli-service lint",
     "postinstall": "npm link @onereach/step-builder-sdk"
   },
@@ -34,9 +35,9 @@
     "@vue/cli-plugin-router": "^4.1.0",
     "@vue/cli-plugin-vuex": "^4.1.0",
     "@vue/cli-service": "~4.5.0",
+    "@vue/compiler-sfc": "^3.0.0-rc.10",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.1.0",
-    "body-parser": "^1.19.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.9.0",
     "eslint-plugin-import": "^2.20.0",
@@ -49,27 +50,13 @@
     "prettier": "^1.19.1",
     "prettier-eslint": "^9.0.1",
     "raw-loader": "^3.1.0",
-    "redbird": "^0.10.0",
+    "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-copy": "^3.3.0",
     "sass-loader": "^8.0.0",
     "standard": "^14.3.1",
     "vue-template-compiler": "^2.6.11",
     "webpack-svgstore-plugin": "^4.1.0",
     "worker-loader": "^2.0.0"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ],
-    "parserOptions": {
-      "parser": "babel-eslint"
-    },
-    "rules": {}
   },
   "browserslist": [
     "> 1%",

@@ -2,12 +2,11 @@ const path = require('path');
 const { nodeResolve } = require('@rollup/plugin-node-resolve');
 const commonjs = require('@rollup/plugin-commonjs');
 const copy = require('rollup-plugin-copy');
-const meta = require('./src/lib/meta.json');
+const clear = require('rollup-plugin-clear');
+const { version } = require('./src/lib/meta.json');
+const generateBuildVersions = require('./src/services/rollupPluginGenerateBuildVersions');
 
-const dist =
-    process.env.BUILD === 'production'
-        ? path.join('dist', meta.version)
-        : path.join('lib', meta.version);
+const dist = path.join('dist', version);
 
 module.exports = {
     input: {
@@ -23,18 +22,20 @@ module.exports = {
         }
     ],
     plugins: [
+        clear({
+            targets: [dist]
+        }),
         nodeResolve({
             browser: true
         }),
         commonjs(),
-        process.env.BUILD === 'development' &&
-            copy({
-                targets: [
-                    { src: 'src/lib/meta.json', dest: dist },
-                    { src: 'src/lib/logic.js', dest: dist },
-                    { src: 'public/**', dest: dist }
-                ]
-            })
+        copy({
+            targets: [
+                { src: 'src/lib/meta.json', dest: dist },
+                { src: 'src/lib/logic.js', dest: dist }
+            ]
+        }),
+        generateBuildVersions()
     ],
     watch: {
         include: 'src/lib/**',

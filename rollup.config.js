@@ -12,7 +12,8 @@ module.exports = {
     input: {
         validator: './src/lib/validator.js',
         serializer: './src/lib/serializer.js',
-        initialValue: './src/lib/initialValue.js'
+        initialValue: './src/lib/initialValue.js',
+        hooks: './src/lib/hooks.js'
     },
     output: [
         {
